@@ -28,7 +28,7 @@ CONFIG  WRT = OFF             ; Flash Program Memory Self Write Enable bits (Wri
     NOP
     NOP
     NOP
-    goto Setup
+    GOTO Setup
     
 ; Main Code section starts at 0008h. User code goes here.
 PSECT code,class=CODE,delta=2
@@ -52,15 +52,15 @@ Setup:
     
     BSF 0x03,5 ;Set Bank 3
     BSF 0x03,6 ;Set Bank 3
-    CLRF 0x87 ;Set all low for digital I/O Enabled.
+    CLRF 0x89 ;Set all low for digital I/O Enabled.
     BSF 0x81,7 ;Set Bit 7 High to disable Pull-Up.
-    CLRF 0x18B ;Set all low to disable interupts.
+    CLRF 0x8B ;Set all low to disable interupts.
     
     BCF 0x03,5 ;Set Bank 0 to get to PORTB.
     BCF 0x03,6 ;Set Bank 0 to get to PORTB.
- goto Main
+ GOTO Main
     
 Main: 
     ; Main code goes here, including the increment loop.
-    INCF 0x06,1 ;Increment on port B, then goto Main to continue the loop.
- goto Main
+    INCF 0x06 ;Increment on port B, then goto Main to continue the loop.
+ GOTO Main

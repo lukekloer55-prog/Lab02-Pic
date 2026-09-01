@@ -1,7 +1,7 @@
 // Luke Kloer
 // RCET 3373
 // Lab 2 PIC16F883 I/O Familirization Part 1
-// git url is : \
+// git url is : https://github.com/lukekloer55-prog/Lab02-Pic.git
 
 ; CONFIG1
 CONFIG  FOSC = XT             ; Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)

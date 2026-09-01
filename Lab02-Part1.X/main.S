@@ -1,7 +1,8 @@
 // Luke Kloer
 // RCET 3373
 // First Program
-// git url is : 
+// git url is : \
+// -Wl,-presetVect=0000h,-pcode=0008h. This is the reset vector locations for the linker.
 
 ; CONFIG1
 CONFIG  FOSC = XT             ; Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
@@ -21,8 +22,8 @@ CONFIG  WRT = OFF             ; Flash Program Memory Self Write Enable bits (Wri
 
 ; Config statements should precede project file includes.
 #include <xc.inc>
-    
-; Reset Vector at 0000h. Execution states here after reset.
+        
+; Reset Vector at 0000h. Execution starts here after reset.
  PSECT resetVect,class=CODE,delta=2
  ResetVector:
     NOP
@@ -33,12 +34,14 @@ CONFIG  WRT = OFF             ; Flash Program Memory Self Write Enable bits (Wri
 ; Main Code section starts at 0008h. User code goes here.
 PSECT code,class=CODE,delta=2
 
- Setup: 
-    ; Add device setup here
-    goto Main
+; Add device setup here
+Setup: 
+    
+   
+ goto Main
     
 Main: 
     ; Main code goes here
-    goto Main
-End
+    
+ goto Main
     
